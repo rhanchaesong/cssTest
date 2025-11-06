@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- v4: Title 변경 -->
+    <title>rhanchae song - Cybersecurity Portfolio</title>
+    
+    <!-- 
+      'Classic Serif 폰트 시스템' 적용 (네가 고른 스펙)
+      - 영문: Playfair Display
+      - 한글: Noto Serif KR
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome (아이콘) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <style>
+        /*
+          네가 고른 UI 마크다운 지시사항을 CSS 변수로 선언합니다.
+          - Mobile First 반응형 전략
+          - Vibrant Pink 컬러 시스템
+          - Classic Serif 폰트 시스템
+          - Luxury 공간 설계
+          - Rounded Soft 컴포넌트 스타일
+          - Fade Transition 인터랙션
+        */
+        :root {
+            /* Vibrant Pink 컬러 시스템 (네가 고른 스펙) */
+            --color-primary: #ec4899;
+            --color-secondary: #db2777;
+            --color-accent: #f472b6;
+            --color-bg: #fdf2f8;        /* Gray-50 */
+            --color-text: #831843;       /* Gray-900 */
+            --color-success: #10b981;
+            --color-error: #ef4444;
+            --color-white: #ffffff;
+
+            /* Classic Serif 폰트 시스템 (네가 고른 스펙) */
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Noto Serif KR', serif;
+            --font-size-base: 18px;
+            --line-height-base: 1.5;
+
+            /* Rounded Soft 컴포넌트 스타일 (네가 고른 스펙) */
+            --border-radius: 12px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition-main: all 0.2s ease-in-out;
+            --hover-scale: scale(1.02);
+
+            /* Fade Transition 인터랙션 (네가 고른 스펙) */
+            --transition-fade: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+
+            /* Luxury 공간 시스템 (네가 고른 스펙) */
+            --space-md: 1.5rem;  /* 24px (기본 간격) */
+            --space-lg: 2rem;    /* 32px (컴포넌트 간격) */
+            --space-xl: 4rem;    /* 64px (섹션 간격) */
+            --space-xxl: 5rem;   /* 80px (페이지 여백) */
+        }
+
+        /* --- 기본 스타일 (Mobile First) --- */
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: var(--font-size-base);
+            line-height: var(--line-height-base);
+            background: linear-gradient(175deg, var(--color-white) 0%, var(--color-bg) 100%);
+            color: var(--color-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            color: var(--color-primary);
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+
+        p {
+            margin-bottom: var(--space-md);
+        }
+
+        a {
+            color: var(--color-secondary);
+            text-decoration: none;
+            transition: var(--transition-main);
+        }
+
+        a:hover {
+            color: var(--color-primary);
+            text-decoration: underline;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius);
+        }
+
+        /* --- 레이아웃 (Luxury 공간 + Mobile First) --- */
+
+        .page-container {
+            width: 100%;
+            padding: var(--space-lg) var(--space-md);
+        }
+
+        /* 블로그/아티클 레이아웃 (네가 고른 스펙) */
+        .article-container {
+            max-width: 768px; /* 768px */
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: var(--space-xl);
+        }
+
+        .header {
+            text-align: center;
+            padding: var(--space-lg) 0;
+            border-bottom: 2px solid var(--color-accent);
+            margin-bottom: var(--space-xl);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+        }
+        
+        /* v4: 헤더 부제 추가 */
+        .header .subtitle {
+            font-size: 1.25rem;
+            font-family: var(--font-body); /* 본문 폰트 사용 */
+            color: var(--color-text);
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+
+        .footer {
+            text-align: center;
+            padding: var(--space-lg) 0;
+            margin-top: var(--space-xl);
+            border-top: 1px solid var(--color-accent);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* --- 컴포넌트 (Rounded Soft) --- */
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-weight: 700;
+            text-decoration: none;
+            padding: 0.8rem var(--space-md);
+            border: none;
+            cursor: pointer;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition-main);
+        }
+
+        .btn:hover {
+            background-color: var(--color-secondary);
+            transform: var(--hover-scale);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+
+        /* CSS Grid Modern 그리드 시스템 (네가 고른 스펙) */
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--space-lg); /* 32px 간격 */
+        }
+        
+        .card {
+            background-color: var(--color-white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition-main);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: var(--hover-scale);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            border-radius: 0;
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--color-accent);
+        }
+
+        .card-content {
+            padding: var(--space-md);
+        }
+
+        .card-content h3 {
+            font-size: 1.4rem;
+            color: var(--color-secondary);
+        }
+        
+        /* v4: 프로젝트 타입 태그 */
+        .project-type {
+            display: inline-block;
+            background-color: var(--color-text);
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+
+        /* Fade Transition 인터랙션 (네가 고른 스펙) */
+        .card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            /* v4: 핑크 오버레이로 변경 */
+            background-color: rgba(236, 72, 153, 0.8); 
+            color: var(--color-white);
+            display: flex;
+            flex-direction: column; /* 세로 정렬 */
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-md);
+            text-align: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: var(--transition-fade);
+        }
+        
+        /* v4: 오버레이 폰트 */
+        .card-overlay p {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .card-overlay i {
+            font-size: 2rem;
+        }
+
+        .card:hover .card-overlay {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* --- 반응형 (Mobile First) --- */
+        
+        @media (min-width: 600px) {
+            .grid-container {
+                /* auto-fit, minmax(250px, 1fr) */
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (min-width: 768px) {
+            .page-container {
+                padding: var(--space-xl) var(--space-xxl);
+            }
+
+            .header h1 {
+                font-size: 3.5rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="page-container">
+
+        <header class="header article-container">
+            <h1>rhanchae song</h1>
+            <!-- v4: 부제/학교정보 변경 -->
+            <p class="subtitle">Aspiring Cybersecurity Expert<br>
+            한신대학교 자유전공학부 1학년</p>
+        </header>
+
+        <main>
+            <section class="section article-container" id="about">
+                <h2>About Me</h2>
+                <p>
+                    <!-- v4: 자기소개 변경 -->
+                    안녕하세요. 정보보안 전문가를 꿈꾸며 끊임없이 탐구하는 rhanchae song입니다. 
+                    현재 한신대학교 자유전공학부에서 1학년으로 재학하며
+                    다양한 학문적 기초와 IT 기술을 쌓고 있습니다.
+                </p>
+                <p>
+                    저는 복잡한 문제를 분석하고 논리적인 해결책을 찾는 과정에서 큰 보람을 느끼며, 
+                    디지털 세계의 안전을 지키는 일에 기여하고 싶습니다.
+                </p>
+                <a href="mailto:youremail@example.com" class="btn">Contact Me &rarr;</a>
+            </section>
+
+            <section class="section" id="projects">
+                <!-- v4: h2를 article-container 밖으로 이동시켜 그리드와 정렬 -->
+                <h2 class="article-container">Projects & Studies</h2>
+                
+                <!-- v4: 프로젝트 카드 내용 변경 -->
+                <div class="grid-container">
+                    
+                    <!-- 카드 1 -->
+                    <div class="card">
+                        <img src="https://placehold.co/600x400/ec4899/fdf2f8?text=Python+Script" alt="파이썬 스크립트">
+                        <div class="card-content">
+                            <span class="project-type">PERSONAL STUDY</span>
+                            <h3>파이썬 자동화 스크립트</h3>
+                            <p>반복적인 작업을 자동화하는 간단한 Python 스크립트를 작성하며 프로그래밍 기초를 다지고 있습니다.</p>
+                        </div>
+                        <div class="card-overlay">
+                            <i class="fa-brands fa-python"></i>
+                            <p>Python 기초 학습</p>
+                        </div>
+                    </div>
+
+                    <!-- 카드 2 -->
+                    <div class="card">
+                        <img src="https://placehold.co/600x400/831843/fdf2f8?text=Network+Study" alt="네트워크 스터디">
+                        <div class="card-content">
+                            <span class="project-type">TEAM STUDY</span>
+                            <h3>네트워크 기초 스터디</h3>
+                            <p>OSI 7계층과 TCP/IP 모델을 학습하며, 네트워크 통신의 기본 원리를 이해하기 위해 스터디에 참여 중입니다.</p>
+                        </div>
+                        <div class="card-overlay">
+                            <i class="fa-solid fa-network-wired"></i>
+                            <p>Wireshark 패킷 분석 (예정)</p>
+                        </div>
+                    </div>
+
+                    <!-- 카드 3 -->
+                    <div class="card">
+                        <img src="https://placehold.co/600x400/f472b6/fdf2f8?text=Web+Security" alt="웹 보안 실습">
+                        <div class="card-content">
+                            <span class="project-type">PRACTICE</span>
+                            <h3>기초 웹 취약점 실습</h3>
+                            <p>SQL Injection, XSS 등 기본적인 웹 해킹 기법의 원리를 공부하고, 방어 코드를 실습하고 있습니다.</p>
+                        </div>
+                         <div class="card-overlay">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <p>보안 코딩 (Secure Coding)</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer article-container">
+            <p>&copy; 2025 rhanchae song. All rights reserved.</p>
+        </footer>
+
+    </div>
+</body>
+</html>
